@@ -1,32 +1,12 @@
+<script src="/scripts/p5.js"></script>
+
+<div id="app"></div>
+
 <script>
-  // video source: https://vimeo.com/90312869
-  var textures,
-    theta = 0,
-    space
-
-  function setup() {
-    createCanvas(windowWidth, windowHeight, WEBGL)
-    noStroke()
-    textures = {
-      earth: loadImage("/images/textures/earth.jpg"),
-      sun: loadImage('/images/textures/sun.jpg')
-    }
-
-
-  }
-
-  function draw() {
-    background(0);
-    push();
-    var dirY = (mouseY / height - 0.5) * 4;
-    var dirX = (mouseX / width - 0.5) * 4;
-    directionalLight(204, 204, 204, dirX, dirY, 1);
-    rotateX(map(mouseX* -1 / 5, 0, height, 0, PI));
-    rotateY(theta);
-    texture(textures.earth);
-    sphere(150);
-    pop();
-    theta += 0.005;
-  }
-
+	var app = new Moon({
+		el: '#app',
+		data: {
+			planet: 'earth'
+		}
+	})
 </script>
