@@ -1,0 +1,24 @@
+<div id="app">
+  <h1>{{ weight }}</h1>
+  <button id="btn">Click</button>
+</div>
+
+<script>
+  var app = new Moon({
+    el: '#app',
+    data: {
+      weight: 0
+    }
+  })
+
+  document.getElementById('btn').addEventListener('click', () => {
+    console.log('click')
+    io.socket.get('/api/start', (body, res) => {
+      if (res.statusCode === 200) {
+        console.log(JSON.stringify(body))
+        app.set('weight', body.weight)
+      }
+    })
+  })
+
+</script>
