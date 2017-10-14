@@ -7,14 +7,14 @@
 
 module.exports = {
 
-  getData: (req, res) => {
-    if (!req.session.getphoto)
-      return res.json({
-        response: false
-      })
-    else
-      req.session.weight = req.params.weight
-    return res.ok()
+  setData: (req, res) => {
+    if (!req.session.getphoto) return res.json({
+      response: false
+    })
+    else req.session.weight = req.params.weight
+    return res.json({
+      data: req.session.weight
+    })
   },
 
   start: (req, res) => {
@@ -24,7 +24,7 @@ module.exports = {
     // return res.ok()
 
     return res.json({
-        weight: 34
+      weight: 34
     })
   },
 
