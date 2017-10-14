@@ -1,0 +1,27 @@
+<script>
+  // video source: https://vimeo.com/90312869
+  var textures,
+    theta = 0,
+    space
+
+  function setup() {
+    createCanvas(windowWidth, windowHeight, WEBGL)
+    textures = {
+      earth: loadImage("/images/textures/earth.jpg"),
+      space: loadImage('/images/textures/space.jpg')
+    }
+  }
+
+  function draw() {
+    background(0);
+    push();
+    rotateY(theta);
+    texture(textures.earth);
+    sphere(150);
+    pop();
+    translate(440, 0, 0);
+    push();
+    theta += 0.005;
+  }
+
+</script>
