@@ -6,21 +6,25 @@
 
   function setup() {
     createCanvas(windowWidth, windowHeight, WEBGL)
+    noStroke()
     textures = {
       earth: loadImage("/images/textures/earth.jpg"),
-      space: loadImage('/images/textures/space.jpg')
+      sun: loadImage('/images/textures/sun.jpg')
     }
+
+
   }
 
   function draw() {
     background(0);
     push();
+    var dirY = (mouseY / height - 0.5) * 4;
+	var dirX = (mouseX / width - 0.5) * 4;
+	directionalLight(204, 204, 204, dirX, dirY, 1);
     rotateY(theta);
     texture(textures.earth);
     sphere(150);
     pop();
-    translate(440, 0, 0);
-    push();
     theta += 0.005;
   }
 
