@@ -1,0 +1,32 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#app {
+    background-color: black;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400 !important;
+}
+
+#header {
+    position: absolute;
+    margin: 7em;
+    padding-left: 40em;
+    text-align: right;
+}
+
+h1 {
+    position: absolute;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    background-color: transparent;
+    font-size: 15em;
+    font-family: 'Rubik', sans-serif;
+}
+
+p {
+    background-color: transparent;
+}

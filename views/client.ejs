@@ -1,12 +1,30 @@
+<div id="app">
+
+  <div id="header">
+    <h1>Tierra</h1>
+    <p>Planeta</p>
+  </div>
+
+  <div id="canvas">
+  </div>
+</div>
+
 <script src="/scripts/p5.js"></script>
-
-<div id="app"></div>
-
 <script>
-	var app = new Moon({
-		el: '#app',
-		data: {
-			planet: 'earth'
-		}
-	})
+  var app = new Moon({
+    el: '#app',
+    hooks: {
+      init: function () {
+        planet = this.get('planet')
+      }
+    },
+    data: {
+      planet: 'earth',
+      weight: 49
+    },
+    methods: {}
+  })
+
 </script>
+
+<script src="/scripts/data.js"></script>

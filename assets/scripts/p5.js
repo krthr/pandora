@@ -1,8 +1,7 @@
 var planets,
   theta = 0,
-  planet = "mars",
-
-  backgroundSound;
+  planet,
+  backgroundSound
 
 function preload() {
   // Información de los planetas
@@ -46,16 +45,15 @@ function preload() {
       gravity: 0
     }
   }
-
   soundFormats('mp3')
   backgroundSound = loadSound('/sounds/interstellar.mp3')
-
 }
 
 function setup() {
-  var canvas = createCanvas(windowWidth, windowHeight, WEBGL);
-  canvas.parent('app')
-  backgroundSound.loop()
+  var x = windowWidth - 500;
+  var canvas = createCanvas(x, windowHeight, WEBGL);
+  canvas.parent('canvas')
+  backgroundSound.loop() // Repetir canción
 }
 
 function draw() {
@@ -71,7 +69,7 @@ function draw() {
 
   var size;
   if (planets[planet].size) size = planets[planet].size;
-  else size = 150;
+  else size = 250;
   
   sphere(size);
 
