@@ -19,8 +19,9 @@
     background(0);
     push();
     var dirY = (mouseY / height - 0.5) * 4;
-	var dirX = (mouseX / width - 0.5) * 4;
-	directionalLight(204, 204, 204, dirX, dirY, 1);
+    var dirX = (mouseX / width - 0.5) * 4;
+    directionalLight(204, 204, 204, dirX, dirY, 1);
+    rotateX(map(mouseX* -1 / 5, 0, height, 0, PI));
     rotateY(theta);
     texture(textures.earth);
     sphere(150);
