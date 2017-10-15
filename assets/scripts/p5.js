@@ -59,8 +59,8 @@ function setup() {
 function draw() {
   background(0);
   push();
-  var dirY = (mouseY / height - 0.5) * 4;
-  var dirX = (mouseX / width - 0.5) * 4;
+  var dirY = (225 / height - 0.5) * 4;
+  var dirX = (225 / width - 0.5) * 4;
   directionalLight(200, 200, 200, dirX, dirY, 1);
   rotateX(map(-1 * mouseX / 7, 0, height, 0, PI));
   rotateY(theta);
