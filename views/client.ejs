@@ -1,30 +1,41 @@
+<script src="/scripts/p5.js"></script>
 <div id="app">
 
   <div id="header">
-    <h1 class="planet">Tierra</h1>
+    <h1 class="planet">{{ info.name }}</h1>
     <p class="description">Planeta</p>
   </div>
 
-  <div id="canvas">
-  </div>
+  <div id="canvas"></div>
 </div>
 
-<script src="/scripts/p5.js"></script>
+
 <script>
   var app = new Moon({
     el: '#app',
     hooks: {
       init: function () {
-        planet = this.get('planet')
+        planet = this.get('planet');
+        this.set('info', {
+          name: 'Tierra',
+          gravity: 9.8
+        });
       }
     },
     data: {
-      planet: 'sun',
+      planet: 'earth',
+      info: {},
       weight: 49
     },
-    methods: {}
+    methods: {
+      planets: function () {
+        return JSON.stringify(planets[0])
+      }
+    }
   })
 
 </script>
+
+
 
 <script src="/scripts/data.js"></script>
