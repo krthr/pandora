@@ -5,56 +5,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>P A N D O R A  -  B A C K </title>
+  <title>P A N D O R A - B A C K </title>
 
   <script src="https://unpkg.com/moonjs"></script>
   <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700|Josefin+Sans:400,700|Prompt:400,500,700|Roboto+Mono:400,400i,500,500i"
     rel="stylesheet">
 
   <script src="/scripts/terminal.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/wingcss" />
 
   <script src="/js/dependencies/sails.io.js"></script>
 </head>
 
 <body>
+  <style>
+    html,
+    body {
+        margin: 0;
+    }
+
+    .form {
+        padding: 10px;
+        margin: 10px;
+    }
+    input {
+        width: 90% !important;
+    }
+
+    #terminal {
+        height: 600px;
+        max-height: 800px;
+        overflow: auto;
+    }
+
+    .col {
+        overflow: auto;
+    }
+
+  </style>
   <div id="app">
-    <h1>Peso: {{ weight }}</h1>
-    <input id="weight" type="number" name="weight" placeholder="Peso">
-    <button id="btn">Enviar</button>
-    <button id="btn-restore" m-on:click="restore">Restaurar</button>
+    <div class="row form">
+
+      <div class="col">
+        <div class="cards">
+          <div class="card">
+                <h3 class="card-header">Peso actual: {{ weight }}</h3>
+            <p class="card-body">
+              <input id="weight" type="number" name="weight" placeholder="Peso">
+            </p>
+            <div class="card-footer center text-center">
+              <p>
+                <button id="btn" class='outline'>Enviar</button>
+                <button id="btn-restore" m-on:click="restore">Restaurar</button>
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
   </div>
-  <div id="terminal"></div>
 
   <script>
-    var $ = document,
-      t = new Terminal({
-        dom: $.getElementById('terminal'),
-        speed: 45
-      }),
-      initTerminal = () => {
-        t.run(function (o) {
-          o.output('P A N D O R A  / 2 0 1 7').wait(300);
-          o.newline();
-          o.output('Iniciando administrador......').wait(300);
-          o.newline();
-        })
-      },
-      write = function (msg) {
-        t.run(function (o) {
-          o.output(msg).wait(300)
-          o.newline()
-        })
-      }
+    var $ = document
 
     var app = new Moon({
       el: "#app",
       data: {
         weight: null
-      },
-      hooks: {
-        init: function () {
-          initTerminal()
-        }
       },
       methods: {
         restore: function () {
@@ -62,7 +84,6 @@
           io.socket.get('/peso/0', (data, res) => {
             if (res.statusCode === 200) {
               app.set('weight', 0)
-              write('0')
             }
           })
         }
@@ -77,7 +98,6 @@
       io.socket.get('/peso/' + peso, (data, res) => {
         if (res.statusCode === 200) {
           app.set('weight', peso)
-          write(peso.toString())
         }
       })
     })
