@@ -13,18 +13,16 @@ html, body {
 
 #header {
     position: absolute;
-    margin: 7em;
-    padding-left: 40em;
+    top: 100px;
+    right: 100px;
     text-align: right;
 }
 
 h1 {
-    position: absolute;
-    margin-right: 1em;
-    margin-bottom: 1em;
     background-color: transparent;
-    font-size: 15em;
+    font-size: 15rem;
     font-family: 'Rubik', sans-serif;
+    margin: 0;
 }
 
 p {

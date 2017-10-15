@@ -46,14 +46,14 @@ function preload() {
     }
   }
   soundFormats('mp3')
-  backgroundSound = loadSound('/sounds/interstellar.mp3')
+  // backgroundSound = loadSound('/sounds/interstellar.mp3')
 }
 
 function setup() {
   var x = windowWidth - 500;
   var canvas = createCanvas(x, windowHeight, WEBGL);
   canvas.parent('canvas')
-  backgroundSound.loop() // Repetir canción
+  // backgroundSound.loop() // Repetir canción
 }
 
 function draw() {
