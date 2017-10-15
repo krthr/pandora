@@ -33,11 +33,16 @@ module.exports.routes = {
 
   '/client': {
     view: 'client',
-    layout: false
+    locals: {
+      layout: false
+    }
   },
 
   '/admin': {
-    view: 'admin'
+    view: 'admin',
+    locals: {
+      layout: false
+    }
   },
 
   '/peso/:weight': 'ApiController.setData'

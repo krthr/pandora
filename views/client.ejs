@@ -5,21 +5,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Pandora</title>
+  <title>P A N D O R A</title>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.sound.min.js"></script>
   <script src="https://unpkg.com/moonjs"></script>
-  <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,500,500i" rel="stylesheet">
-  <script src="/js/dependencies/sails.io.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700|Josefin+Sans:400,700|Prompt:400,500,700|Roboto+Mono:400,400i,500,500i"
+    rel="stylesheet">
 
+  <script src="/scripts/terminal.min.js"></script>
+
+  <script src="/js/dependencies/sails.io.js"></script>
   <link rel="stylesheet" href="/styles/main.css">
+
 </head>
 
 <body>
 
+  <!-- modal -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <div id="terminal"></div>
+      <br>
+    </div>
+  </div>
+  <!-- end modal -->
 
+  <!-- app -->
   <div id="app">
     <div id="navbar" class="absolute">
       <ul class="planet-list">
@@ -73,16 +85,55 @@
 
     <div id="canvas"></div>
   </div>
+  <!-- end app -->
 
   <script src="/scripts/p5.js"></script>
   <script src="/scripts/terminal.min.js"></script>
 
+  <!-- app -->
   <script>
+    var modal = document.getElementById('myModal');
+    var t
+    var initTerminal = function () {
+
+      document.getElementById('terminal').innerHTML = ''
+      t = new Terminal({
+        dom: document.getElementById('terminal'),
+        speed: 45
+      })
+
+      t.run(function (o) {
+        o.output('P A N D O R A  / 2 0 1 7').wait(300);
+        o.newline();
+        o.output('¡Hola! Es un gusto tenerte de vuelta...').wait(300);
+        o.newline();
+        o.newline();
+        o.output(`${(new Date)}` + ' : Iniciando sistemas...').wait(300);
+        o.newline();
+        o.output(`${(new Date)}` + ' : Iniciando registros...').wait(300);
+        o.newline();
+
+
+        o.output(`${(new Date)}` + ' : Sistema iniciado.').wait(300);
+        o.del(3).output('do. ').wait(1000);
+        o.newline();
+
+        o.output(`${(new Date)}` + ' : Por favor, ubícate en el punto indicado.');
+        o.del(9).output('indicado.').wait(200).del(1).output('. ').wait(800);
+        o.newline();
+
+        o.output(`${(new Date)}` + ' : Leyendo datos...').wait(800);
+        o.newline();
+      });
+    }
+
+
     var app = new Moon({
       el: '#app',
       hooks: {
         init: function () {
           planet = 'earth'
+          initTerminal()
         }
       },
       data: {
@@ -90,7 +141,7 @@
           name: 'Tierra',
           gravity: 9.8
         },
-        weight: 49
+        weight: 0
       },
       methods: {
         setPlanet: function (planet) {
@@ -106,14 +157,18 @@
       }
     })
 
-  </script>
-
-  <script>
-    console.log('Socket')
+    /**
+     *  Obtener peso 
+     */
     io.socket.on('updateWeight', (msg) => {
       console.log('Mensaje recibido: ' + JSON.stringify(msg))
       if (msg !== null) {
-        app.set('weight', parseFloat(msg.weight))
+        var data = parseFloat(msg.weight)
+        if (data === 0) {
+          modal.style.display = "block"
+          initTerminal()
+        } else modal.style.display = "none"
+        app.set('weight', data)
       }
     })
 
