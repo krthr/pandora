@@ -68,3 +68,44 @@ h1.planet {
 #info {
     margin-left: 40px;
 }
+
+.planet-list {
+    list-style-type: none;
+    left: 80px;
+}
+
+li.sun:hover {
+    color: yellow
+}
+
+li.mercury:hover {
+    color: rgb(107, 107, 107)
+}
+
+li.venus:hover {
+    color: rgb(156, 66, 14)
+}
+
+li.earth:hover {
+    color: rgb(0, 80, 133)
+}
+
+li.mars:hover {
+    color: rgb(226, 54, 11)
+}
+
+li.jupiter:hover {
+    color: rgb(189, 121, 48)
+}
+
+li.saturn:hover {
+    color: rgb(198, 199, 169)
+}
+
+li.uranus:hover {
+    color: rgb(127, 187, 224)
+}
+
+li.neptune:hover {
+    color: rgb(4, 62, 99)
+}

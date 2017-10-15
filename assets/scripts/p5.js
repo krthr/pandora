@@ -2,36 +2,40 @@ var planets = {
   sun: {
     name: 'Sol',
     size: 300,
-    gravity: 0,
+    gravity: 274,
     sound: ''
   },
   mercury: {
     name: 'Mercurio',
-    gravity: 0
+    gravity: 2.8
   },
   venus: {
-    gravity: 0
+    name: 'Venus',
+    gravity: 8.9
   },
   earth: {
+    name: 'Tierra',
     gravity: 9.8
   },
   mars: {
     name: 'Marte',
-    gravity: 0
+    gravity: 3.7
   },
   jupiter: {
     name: 'Júpiter',
-    gravity: 0
+    gravity: 22.9
   },
   saturn: {
     name: 'Saturno',
-    gravity: 0
+    gravity: 9.1
   },
   uranus: {
-    gravity: 0
+    name: 'Urano',
+    gravity: 7.8
   },
   neptune: {
-    gravity: 0
+    name: 'Neptuno',
+    gravity: 11.00
   }
 }
 

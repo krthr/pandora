@@ -1,6 +1,20 @@
 <script src="/scripts/p5.js"></script>
+<script src="/scripts/terminal.min.js"></script>
 
 <div id="app">
+  <div id="navbar" class="absolute">
+    <ul class="planet-list">
+      <li m-on:click="setPlanet('sun')" class="sun">Sol</li>
+      <li m-on:click="setPlanet('mercury')" class="mercury">Mercurio</li>
+      <li m-on:click="setPlanet('venus')" class="venus">Venus</li>
+      <li m-on:click="setPlanet('earth')" class="earth">Tierra</li>
+      <li m-on:click="setPlanet('mars')" class="mars">Marte</li>
+      <li m-on:click="setPlanet('jupiter')" class="jupiter">Júpiter</li>
+      <li m-on:click="setPlanet('saturn')" class="saturn">Saturno</li>
+      <li m-on:click="setPlanet('uranus')" class="uranus">Urano</li>
+      <li m-on:click="setPlanet('neptune')" class="neptune">Neptuno</li>
+    </ul>
+  </div>
 
   <div class="absolute info-container">
     <div id="header" class="">
@@ -20,12 +34,12 @@
     </div>
     <br>
     <div id="info-panel">
-      <div m-if="planet !== 'earth'" id="info" class="" 1>
+      <div m-if="sel !== 'earth'" id="info" class="" 1>
         <p id="data">~ {{ round(weight * info.gravity, 2) }} N</p>
         <p id="detail">Tu peso en {{ info.name }}
           <br> (Newtons)</p>
       </div>
-      <div m-if="planet !== 'earth'" id="info">
+      <div m-if="sel !== 'earth'" id="info">
         <p id="data">vs</p>
       </div>
 
@@ -36,10 +50,9 @@
       </div>
     </div>
 
-
-
   </div>
 
+  <div id="terminal" class="absolute"></div>
 
 
   <div id="canvas"></div>
@@ -51,20 +64,24 @@
     el: '#app',
     hooks: {
       init: function () {
-        planet = this.get('planet');
-        this.set('info', {
-          name: 'Tierra',
-          gravity: 9.8
-        });
+        planet = 'earth'
       }
     },
     data: {
-      planet: 'earth',
-      info: {},
+      info: {
+        name: 'Tierra',
+        gravity: 9.8
+      },
       weight: 49
     },
     methods: {
-      setData: function () {},
+      setPlanet: function (planet) {
+        app.set('info', {
+          name: planets[planet].name,
+          gravity: planets[planet].gravity
+        })
+        window.planet = planet
+      },
       round: function (value, decimals) {
         return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
       }
@@ -76,14 +93,15 @@
 
 
 <script src="/scripts/data.js"></script>
-
 <script src="/js/dependencies/sails.io.js"></script>
 
 <script>
   console.log('Socket')
   io.socket.on('updateWeight', (msg) => {
     console.log('Mensaje recibido: ' + JSON.stringify(msg))
-    if (msg !== null) app.set('weight', parseFloat(msg.weight))
+    if (msg !== null) {
+      app.set('weight', parseFloat(msg.weight))
+    }
   })
 
 </script>
