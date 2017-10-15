@@ -37,7 +37,13 @@ module.exports.routes = {
 
   '/client': {
     view: 'client'
-  }
+  },
+
+  '/admin': {
+    view: 'admin'
+  },
+
+  '/peso/:weight': 'ApiController.setData'
 
   /***************************************************************************
   *                                                                          *

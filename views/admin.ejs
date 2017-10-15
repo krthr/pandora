@@ -1,0 +1,38 @@
+<div id="app">
+  <h1>Peso: {{ weight }}</h1>
+  <input id="weight" type="number" name="weight" placeholder="Peso">
+  <button id="btn">Enviar</button>
+  <button id="btn-restore" m-on:click="restore">Restaurar</button>
+</div>
+
+<script>
+  var app = new Moon({
+    el: "#app",
+    data: {
+      weight: null
+    },
+    methods: {
+      restore: function () {
+        this.set('weight', 0)
+        io.socket.get('/peso/0', (data, res) => {
+          if (res.statusCode === 200) {
+            app.set('weight', peso)
+          }
+        })
+      }
+    }
+  })
+
+  var $ = document
+  $.getElementById('btn').addEventListener('click', () => {
+    var peso = parseFloat($.getElementById('weight').value)
+    console.log('peso: ' + peso)
+    io.socket.get('/peso/' + peso, (data, res) => {
+      console.log('respuesta: ' + res.statusCode)
+      if (res.statusCode === 200) {
+        app.set('weight', peso)
+      }
+    })
+  })
+
+</script>

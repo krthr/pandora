@@ -6,33 +6,21 @@
  */
 
 module.exports = {
-  /**
-   * Obtener foto y enviarla vía Sockets
-   */
-  getPhoto: (req, res) => {
-    if (req.session.getphoto) {
-      var base64Image = req.params.image;
-      // TODO Image
-      // TODO Socket emit image src
-    }
-  },
 
   /**
    * Asignar dato de peso y emitirlo vía Socket
    */
   setData: (req, res) => {
-    req.session.weight = req.params.weight;
-    req.session.getphoto = false;
-    // TODO Socket emit weight to main panel
-    return res.ok();
-  },
+    if (req.isSocket !== true) return res.badRequest()
 
-  /**
-   * Restaurar datos a null
-   */
-  restoreData: (req, res) => {
-    req.session.weight = null;
-    req.session.getphoto = null;
+    req.session.weight = req.params.weight
+    req.session.getphoto = false
+    // TODO Socket emit weight to main panel
+
+    sails.sockets.blast('updateWeight', {
+      weight: req.session.weight
+    })
+
     return res.ok();
   }
 };

@@ -1,10 +1,46 @@
 <script src="/scripts/p5.js"></script>
+
 <div id="app">
 
-  <div id="header">
-    <h1 class="planet">{{ info.name }}</h1>
-    <p class="description">Planeta</p>
+  <div class="absolute info-container">
+    <div id="header" class="">
+      <h1 class="planet transparent">{{ info.name }}</h1>
+      <!-- <p class="description transparent">Planeta</p> -->
+    </div>
+
+    <div id="info-panel">
+      <div id="info" class="" 1>
+        <p id="data">{{ info.gravity }}</p>
+        <p id="detail">Gravedad (m/s^2)</p>
+      </div>
+      <div id="info" 2>
+        <p id="data">{{ weight }}</p>
+        <p id="detail">Tu masa (Kg.)</p>
+      </div>
+    </div>
+    <br>
+    <div id="info-panel">
+      <div m-if="planet !== 'earth'" id="info" class="" 1>
+        <p id="data">~ {{ round(weight * info.gravity, 2) }} N</p>
+        <p id="detail">Tu peso en {{ info.name }}
+          <br> (Newtons)</p>
+      </div>
+      <div m-if="planet !== 'earth'" id="info">
+        <p id="data">vs</p>
+      </div>
+
+      <div id="info" 2>
+        <p id="data">~ {{ round(weight * 9.8, 2) }} N</p>
+        <p id="detail">Tu peso en la Tierra
+          <br> (Newtons)</p>
+      </div>
+    </div>
+
+
+
   </div>
+
+
 
   <div id="canvas"></div>
 </div>
@@ -28,8 +64,9 @@
       weight: 49
     },
     methods: {
-      planets: function () {
-        return JSON.stringify(planets[0])
+      setData: function () {},
+      round: function (value, decimals) {
+        return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
       }
     }
   })
@@ -39,3 +76,14 @@
 
 
 <script src="/scripts/data.js"></script>
+
+<script src="/js/dependencies/sails.io.js"></script>
+
+<script>
+  console.log('Socket')
+  io.socket.on('updateWeight', (msg) => {
+    console.log('Mensaje recibido: ' + JSON.stringify(msg))
+    if (msg !== null) app.set('weight', parseFloat(msg.weight))
+  })
+
+</script>
