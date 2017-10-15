@@ -1,107 +1,124 @@
-<script src="/scripts/p5.js"></script>
-<script src="/scripts/terminal.min.js"></script>
+<!DOCTYPE html>
+<html lang="es">
 
-<div id="app">
-  <div id="navbar" class="absolute">
-    <ul class="planet-list">
-      <li m-on:click="setPlanet('sun')" class="sun">Sol</li>
-      <li m-on:click="setPlanet('mercury')" class="mercury">Mercurio</li>
-      <li m-on:click="setPlanet('venus')" class="venus">Venus</li>
-      <li m-on:click="setPlanet('earth')" class="earth">Tierra</li>
-      <li m-on:click="setPlanet('mars')" class="mars">Marte</li>
-      <li m-on:click="setPlanet('jupiter')" class="jupiter">Júpiter</li>
-      <li m-on:click="setPlanet('saturn')" class="saturn">Saturno</li>
-      <li m-on:click="setPlanet('uranus')" class="uranus">Urano</li>
-      <li m-on:click="setPlanet('neptune')" class="neptune">Neptuno</li>
-    </ul>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pandora</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.sound.min.js"></script>
+  <script src="https://unpkg.com/moonjs"></script>
+  <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,500,500i" rel="stylesheet">
+  <script src="/js/dependencies/sails.io.js"></script>
+
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+
+
+  <div id="app">
+    <div id="navbar" class="absolute">
+      <ul class="planet-list">
+        <li m-on:click="setPlanet('sun')" class="sun">Sol</li>
+        <li m-on:click="setPlanet('mercury')" class="mercury">Mercurio</li>
+        <li m-on:click="setPlanet('venus')" class="venus">Venus</li>
+        <li m-on:click="setPlanet('earth')" class="earth">Tierra</li>
+        <li m-on:click="setPlanet('mars')" class="mars">Marte</li>
+        <li m-on:click="setPlanet('jupiter')" class="jupiter">Júpiter</li>
+        <li m-on:click="setPlanet('saturn')" class="saturn">Saturno</li>
+        <li m-on:click="setPlanet('uranus')" class="uranus">Urano</li>
+        <li m-on:click="setPlanet('neptune')" class="neptune">Neptuno</li>
+      </ul>
+    </div>
+
+    <div class="absolute info-container">
+      <div id="header" class="">
+        <h1 class="planet transparent">{{ info.name }}</h1>
+        <!-- <p class="description transparent">Planeta</p> -->
+      </div>
+
+      <div id="info-panel">
+        <div id="info" class="" 1>
+          <p id="data">{{ info.gravity }}</p>
+          <p id="detail">Gravedad (m/s^2)</p>
+        </div>
+        <div id="info" 2>
+          <p id="data">{{ weight }}</p>
+          <p id="detail">Tu masa (Kg.)</p>
+        </div>
+      </div>
+      <br>
+      <div id="info-panel">
+        <div m-if="sel !== 'earth'" id="info" class="" 1>
+          <p id="data">~ {{ round(weight * info.gravity, 2) }} N</p>
+          <p id="detail">Tu peso en {{ info.name }}
+            <br> (Newtons)</p>
+        </div>
+        <div m-if="sel !== 'earth'" id="info">
+          <p id="data">vs</p>
+        </div>
+
+        <div id="info" 2>
+          <p id="data">~ {{ round(weight * 9.8, 2) }} N</p>
+          <p id="detail">Tu peso en la Tierra
+            <br> (Newtons)</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="canvas"></div>
   </div>
 
-  <div class="absolute info-container">
-    <div id="header" class="">
-      <h1 class="planet transparent">{{ info.name }}</h1>
-      <!-- <p class="description transparent">Planeta</p> -->
-    </div>
+  <script src="/scripts/p5.js"></script>
+  <script src="/scripts/terminal.min.js"></script>
 
-    <div id="info-panel">
-      <div id="info" class="" 1>
-        <p id="data">{{ info.gravity }}</p>
-        <p id="detail">Gravedad (m/s^2)</p>
-      </div>
-      <div id="info" 2>
-        <p id="data">{{ weight }}</p>
-        <p id="detail">Tu masa (Kg.)</p>
-      </div>
-    </div>
-    <br>
-    <div id="info-panel">
-      <div m-if="sel !== 'earth'" id="info" class="" 1>
-        <p id="data">~ {{ round(weight * info.gravity, 2) }} N</p>
-        <p id="detail">Tu peso en {{ info.name }}
-          <br> (Newtons)</p>
-      </div>
-      <div m-if="sel !== 'earth'" id="info">
-        <p id="data">vs</p>
-      </div>
-
-      <div id="info" 2>
-        <p id="data">~ {{ round(weight * 9.8, 2) }} N</p>
-        <p id="detail">Tu peso en la Tierra
-          <br> (Newtons)</p>
-      </div>
-    </div>
-
-  </div>
-
-  <div id="terminal" class="absolute"></div>
-
-
-  <div id="canvas"></div>
-</div>
-
-
-<script>
-  var app = new Moon({
-    el: '#app',
-    hooks: {
-      init: function () {
-        planet = 'earth'
-      }
-    },
-    data: {
-      info: {
-        name: 'Tierra',
-        gravity: 9.8
+  <script>
+    var app = new Moon({
+      el: '#app',
+      hooks: {
+        init: function () {
+          planet = 'earth'
+        }
       },
-      weight: 49
-    },
-    methods: {
-      setPlanet: function (planet) {
-        app.set('info', {
-          name: planets[planet].name,
-          gravity: planets[planet].gravity
-        })
-        window.planet = planet
+      data: {
+        info: {
+          name: 'Tierra',
+          gravity: 9.8
+        },
+        weight: 49
       },
-      round: function (value, decimals) {
-        return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
+      methods: {
+        setPlanet: function (planet) {
+          app.set('info', {
+            name: planets[planet].name,
+            gravity: planets[planet].gravity
+          })
+          window.planet = planet
+        },
+        round: function (value, decimals) {
+          return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
+        }
       }
-    }
-  })
+    })
 
-</script>
+  </script>
 
+  <script>
+    console.log('Socket')
+    io.socket.on('updateWeight', (msg) => {
+      console.log('Mensaje recibido: ' + JSON.stringify(msg))
+      if (msg !== null) {
+        app.set('weight', parseFloat(msg.weight))
+      }
+    })
 
+  </script>
 
-<script src="/scripts/data.js"></script>
-<script src="/js/dependencies/sails.io.js"></script>
+</body>
 
-<script>
-  console.log('Socket')
-  io.socket.on('updateWeight', (msg) => {
-    console.log('Mensaje recibido: ' + JSON.stringify(msg))
-    if (msg !== null) {
-      app.set('weight', parseFloat(msg.weight))
-    }
-  })
-
-</script>
+</html>

@@ -31,12 +31,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  "/": {
-    view: "test"
-  },
-
   '/client': {
-    view: 'client'
+    view: 'client',
+    layout: false
   },
 
   '/admin': {
