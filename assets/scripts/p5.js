@@ -23,6 +23,7 @@ var planets = {
   },
   jupiter: {
     name: 'Júpiter',
+    size: 270,
     gravity: 22.9
   },
   saturn: {
@@ -54,29 +55,29 @@ function preload() {
   planets.saturn.texture = loadImage("/images/textures/saturn.jpg")
   planets.uranus.texture = loadImage("/images/textures/uranus.jpg")
   planets.neptune.texture = loadImage("/images/textures/neptune.jpg")
-  soundFormats('mp3')
-  // backgroundSound = loadSound('/sounds/interstellar.mp3')
+  soundFormats('mp3') // Formato de sonidos que trabajaremos
+  // Cargar sonido de fondo
+  backgroundSound = loadSound('/sounds/interstellar.mp3')
 }
 
 function setup() {
-  var x = windowWidth - 500;
-  var canvas = createCanvas(x, windowHeight, WEBGL);
-  canvas.parent('canvas')
-  // backgroundSound.loop() // Repetir canción
+  var canvas = createCanvas(windowWidth - 500, windowHeight, WEBGL) // Crear canvas
+  canvas.parent('canvas') // El canvas se creará sobre el div#canvas
+  backgroundSound.loop() // Iniciar y repetir sonido de fondo
 }
 
 function draw() {
-  background(0);
-  push();
+  background(0) // Color de fondo (negro)
+  push()
   var dirY = (250 / height - 0.5) * 4;
   var dirX = (250 / width - 0.5) * 4;
   directionalLight(200, 200, 200, dirX, dirY, 1);
   rotateX(map(-1 * mouseX / 7, 0, height, 0, PI));
-  rotateY(theta);
+  rotateY(theta) // Rotar un ángulo theta
 
-  texture(planets[planet].texture);
-  var size = (planets[planet].size ? planets[planet].size : 250)
-  sphere(size);
+  texture(planets[planet].texture) // Cargar textura del planeta
+  var size = (planets[planet].size ? planets[planet].size : 250) // Obtener el tamaño del planeta o usar 250 por defecto
+  sphere(size) // Crear la esfera
 
   pop();
   theta += 0.005;
