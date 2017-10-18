@@ -1,26 +1,28 @@
 # P A N D O R A
 
+![Earth](https://github.com/krthr/pandora/blob/master/assets/images/screenshots/earth.png?raw=true)
 
-
-## Idea del proyecto
+## Proyecto
 
 Éste proyecto busca, de una manera práctica y dinámica, llevar el conocimiento y lo grandioso del universo a la gente.
 
-## ¿Cómo funciona?
+### ¿Cómo funciona?
 
 Pandora consta de dos partes fundamentales: el servidor y la cámara.
 
-### Servidor
+#### Servidor
 
 El servidor es la "base de control" de Pandora. Allí es donde se aloja la información del peso y de cada planeta.
 
-### Cámara
+#### Cámara
 
 Por el momento la información de la masa es obtenido mediante una cámara remota y digitada a través de una interfaz de administración.
 
-## Integrantes del grupo
+---
 
-### Estudiantes
+### Integrantes del grupo
+
+#### Estudiantes
 
 - Andrés
 - José Polo
@@ -28,17 +30,29 @@ Por el momento la información de la masa es obtenido mediante una cámara remot
 - William Cadenas
 - [Wilson Tovar](http://github.com/krthr)
 
-### Profesor
+#### Profesor: [Juan Carlos Miranda Crespo](https://www.uninorte.edu.co/web/departamento-de-fisica/profesores?p_p_id=InformacionDocenteUninorte2_WAR_InformacionDocenteV3&docenteID=72125558)
 
-- [Juan Carlos Miranda Crespo](https://www.uninorte.edu.co/web/departamento-de-fisica/profesores?p_p_id=InformacionDocenteUninorte2_WAR_InformacionDocenteV3&docenteID=72125558)
+---
 
-
-## Tecnología usadas
+### Tecnología usadas
 
 - Todas las texturas fueron tomadas de: [Solar System Scope](https://www.solarsystemscope.com/textures)
 - [Sails.js + Sockets](http://sailsjs.com)
 - [p5.js](https://p5js.org)
 - [Moon](http://moonjs.ga)
 
+---
+
+### Capturas
+
+![](https://github.com/krthr/pandora/blob/master/assets/images/screenshots/earth.png?raw=true)
+![](https://github.com/krthr/pandora/blob/master/assets/images/screenshots/jupiter.png?raw=true)
+![](https://github.com/krthr/pandora/blob/master/assets/images/screenshots/mars.png?raw=true)
+
+---
+
 ## TODO
+
 - [ ] Usar las mediciones de sensores de peso
+
+## Capturas
