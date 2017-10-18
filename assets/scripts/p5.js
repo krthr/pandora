@@ -72,6 +72,10 @@ var backgroundSound, guiSelect, startSound, guiClick
 var normalVel = false,
   pause = false
 
+/**
+ * Cargar datos requeridos.
+ * p5.js tarda unos segundos en cargar todos los archivos necesarios.
+ */
 function preload() {
   // Cargar texturas
   planets.sun.texture = loadImage("/images/textures/sun.jpg")
@@ -83,39 +87,43 @@ function preload() {
   planets.saturn.texture = loadImage("/images/textures/saturn.jpg")
   planets.uranus.texture = loadImage("/images/textures/uranus.jpg")
   planets.neptune.texture = loadImage("/images/textures/neptune.jpg")
+
   soundFormats('mp3', 'wav') // Formato de sonidos que trabajaremos
+
   // Cargar sonido de fondo
-  backgroundSound = loadSound('/sounds/interstellar.mp3')
-  guiSelect = loadSound('/sounds/gui_select.mp3')
-  startSound = loadSound('/sounds/start.mp3')
-  guiClick = loadSound('/sounds/click.wav')
+  backgroundSound = loadSound('/sounds/interstellar.mp3') // Música de fondo
+  guiSelect = loadSound('/sounds/gui_select.mp3') // Sonido de seleccionar
+  startSound = loadSound('/sounds/start.mp3') // Música de la consola
+  guiClick = loadSound('/sounds/click.wav') // Sonido de click
 }
 
 function setup() {
   var canvas = createCanvas(windowWidth - 500, windowHeight, WEBGL) // Crear canvas
   canvas.parent('canvas') // El canvas se creará sobre el div#canvas
-  // backgroundSound.loop() // Iniciar y repetir sonido de fondo
-  startSound.loop()
+  startSound.loop() // Iniciar sonido  de consola
 }
 
+/**
+ * Dibujar en el Canvas
+ */
 function draw() {
   background(0) // Color de fondo (negro)
   push()
-  var dirY = (250 / height - 0.5) * 4;
-  var dirX = (250 / width - 0.5) * 4;
-  directionalLight(200, 200, 200, dirX, dirY, 1);
-  rotateX(map(-1 * mouseX / 7, 0, height, 0, PI));
+  var dirY = (250 / height - 0.5) * 4,
+    dirX = (250 / width - 0.5) * 4
+  directionalLight(200, 200, 200, dirX, dirY, 1)
+  rotateX(map(-1 * mouseX / 7, 0, height, 0, PI))
   rotateY(theta) // Rotar un ángulo theta
 
   texture(planets[planet].texture) // Cargar textura del planeta
   var size = (planets[planet].size ? planets[planet].size : 250) // Obtener el tamaño del planeta o usar 250 por defecto
   sphere(size) // Crear la esfera
 
-  pop();
+  pop()
 
-  if (!pause) {
-    if (!normalVel) theta += (0.01 / planets[planet].day);
-    else theta += 0.005;
+  if (!pause) { // Si el usuario no ha seleccionado pausar la rotación
+    if (!normalVel) theta += (0.01 / planets[planet].day) // Si el usuario no ha selecciona la velocidad "normal"
+    else theta += 0.005; // Velocidad "normal"
   }
 
 }

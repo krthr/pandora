@@ -129,6 +129,9 @@
       })
     }
 
+    /**
+    * Iniciar terminal
+    */
     var initTerminal = function () {
 
       $.getElementById('terminal').innerHTML = ''
@@ -137,6 +140,7 @@
         speed: 45
       })
 
+      // Escribir en la terminal
       t.run(function (o) {
         o.output('P A N D O R A  / 2 0 1 7').wait(300)
         o.newline()
@@ -162,6 +166,7 @@
       });
     }
 
+    // Moon object
     var app = new Moon({
       el: '#app',
       hooks: {
@@ -182,6 +187,7 @@
         weight: 0
       },
       methods: {
+        // Seleccionar nuevo planeta
         setPlanet: function (planet) {
           app.set('info', {
             name: planets[planet].name,
@@ -194,13 +200,16 @@
           theta = 0
           window.planet = planet
         },
+        // Redondear números
         round: function (value, decimals) {
           return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals)
         },
+        // Velocidad "normal"
         setNormalVel: function () {
           document.getElementById('text_vel').innerHTML = !normalVel ? 'Activar' : 'Desactivar'
           normalVel = normalVel ? false : true
         },
+        // Pausar rotación
         setPause: function () {
           document.getElementById('text_pause').innerHTML = !pause ? 'Continuar' : 'Pausar'
           if (pause) pause = false;
@@ -210,7 +219,7 @@
     })
 
     /**
-     *  Obtener peso 
+     *  Obtener peso (Socket)
      */
     io.socket.on('updateWeight', (msg) => {
       if (msg !== null) {
