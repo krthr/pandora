@@ -96,39 +96,39 @@ li {
 }
 
 li.sun:hover {
-    color: yellow
+    color: #ffff00
 }
 
 li.mercury:hover {
-    color: rgb(107, 107, 107)
+    color: #6b6b6b
 }
 
 li.venus:hover {
-    color: rgb(156, 66, 14)
+    color: #9c420e
 }
 
 li.earth:hover {
-    color: rgb(0, 80, 133)
+    color: #005085
 }
 
 li.mars:hover {
-    color: rgb(226, 54, 11)
+    color: #e2360b
 }
 
 li.jupiter:hover {
-    color: rgb(189, 121, 48)
+    color: #bd7930
 }
 
 li.saturn:hover {
-    color: rgb(198, 199, 169)
+    color: #c6c7a9
 }
 
 li.uranus:hover {
-    color: rgb(127, 187, 224)
+    color: #7fbbe0
 }
 
 li.neptune:hover {
-    color: rgb(4, 62, 99)
+    color: #043e63
 }
 
 

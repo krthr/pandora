@@ -35,15 +35,15 @@
   <div id="app">
     <div id="navbar" class="absolute">
       <ul class="planet-list">
-        <li m-on:click="setPlanet('sun')" class="sun">Sol</li>
-        <li m-on:click="setPlanet('mercury')" class="mercury">Mercurio</li>
-        <li m-on:click="setPlanet('venus')" class="venus">Venus</li>
-        <li m-on:click="setPlanet('earth')" class="earth">Tierra</li>
-        <li m-on:click="setPlanet('mars')" class="mars">Marte</li>
-        <li m-on:click="setPlanet('jupiter')" class="jupiter">Júpiter</li>
-        <li m-on:click="setPlanet('saturn')" class="saturn">Saturno</li>
-        <li m-on:click="setPlanet('uranus')" class="uranus">Urano</li>
-        <li m-on:click="setPlanet('neptune')" class="neptune">Neptuno</li>
+        <li m-on:click="setPlanet('sun')" class="sun" data-color="#ffff00" data-planet="sun">Sol</li>
+        <li m-on:click="setPlanet('mercury')" class="mercury" data-color="#6b6b6b" data-planet="mercury">Mercurio</li>
+        <li m-on:click="setPlanet('venus')" class="venus" data-color="#9c420e" data-planet="venus">Venus</li>
+        <li m-on:click="setPlanet('earth')" class="earth" data-color="#005085" data-planet="earth">Tierra</li>
+        <li m-on:click="setPlanet('mars')" class="mars" data-color="#e2360b" data-planet="mars">Marte</li>
+        <li m-on:click="setPlanet('jupiter')" class="jupiter" data-color="#bd7930" data-planet="jupiter">Júpiter</li>
+        <li m-on:click="setPlanet('saturn')" class="saturn" data-color="#c6c7a9" data-planet="saturn">Saturno</li>
+        <li m-on:click="setPlanet('uranus')" class="uranus" data-color="#7fbbe0" data-planet="uranus">Urano</li>
+        <li m-on:click="setPlanet('neptune')" class="neptune" data-color="#043e63" data-planet="neptune">Neptuno</li>
       </ul>
     </div>
 
@@ -119,7 +119,6 @@
     var t,
       lis = $.getElementsByTagName('LI')
 
-    console.log(lis)
     for (var i = 0; i < lis.length; i++) {
       lis[i].addEventListener('mouseover', () => {
         guiSelect.play()
@@ -130,8 +129,8 @@
     }
 
     /**
-    * Iniciar terminal
-    */
+     * Iniciar terminal
+     */
     var initTerminal = function () {
 
       $.getElementById('terminal').innerHTML = ''
