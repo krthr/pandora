@@ -1,23 +1,36 @@
 # P A N D O R A
 
+
+
 ## Idea del proyecto
+
+Éste proyecto busca, de una manera práctica y dinámica, llevar el conocimiento y lo grandioso del universo a la gente.
 
 ## ¿Cómo funciona?
 
+Pandora consta de dos partes fundamentales: el servidor y la cámara.
+
+### Servidor
+
+El servidor es la "base de control" de Pandora. Allí es donde se aloja la información del peso y de cada planeta.
+
+### Cámara
+
+Por el momento la información de la masa es obtenido mediante una cámara remota y digitada a través de una interfaz de administración.
+
 ## Integrantes del grupo
 
-### Estudiantes:
+### Estudiantes
 
 - Andrés
 - José Polo
 - Juan Solano
 - William Cadenas
-- Wilson Tovar
-
+- [Wilson Tovar](http://github.com/krthr)
 
 ### Profesor
 
-- Juan Carlos Miranda
+- [Juan Carlos Miranda Crespo](https://www.uninorte.edu.co/web/departamento-de-fisica/profesores?p_p_id=InformacionDocenteUninorte2_WAR_InformacionDocenteV3&docenteID=72125558)
 
 
 ## Tecnología usadas
@@ -28,5 +41,4 @@
 - [Moon](http://moonjs.ga)
 
 ## TODO
-
-- [ ] Usar las mediciones de sensores de peso  
+- [ ] Usar las mediciones de sensores de peso
