@@ -41,8 +41,8 @@ Por el momento la información de la masa es obtenido mediante una cámara remot
 - [p5.js](https://p5js.org)
 - [Moon](http://moonjs.ga)
 
-Para correr el servidor: `sails l --port 3000`
-Cliente: `localhost:3000/client`
+Para correr el servidor: `sails l --port 3000`  
+Cliente: `localhost:3000/client`  
 Interfaz de administración: `localhost:3000/admin`
 
 ---
