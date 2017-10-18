@@ -4,6 +4,22 @@
 
 ## ¿Cómo funciona?
 
+## Integrantes del grupo
+
+### Estudiantes:
+
+- Andrés
+- José Polo
+- Juan Solano
+- William Cadenas
+- Wilson Tovar
+
+
+### Profesor
+
+- Juan Carlos Miranda
+
+
 ## Tecnología usadas
 
 - Todas las texturas fueron tomadas de: [Solar System Scope](https://www.solarsystemscope.com/textures)
@@ -13,4 +29,4 @@
 
 ## TODO
 
-- [] Usar las mediciones de sensores de peso  
+- [ ] Usar las mediciones de sensores de peso  
