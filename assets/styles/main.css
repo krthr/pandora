@@ -73,6 +73,11 @@ h1.planet {
     margin-left: 40px;
 }
 
+#info-planet {
+    left: 15px;
+    bottom: 10px;
+}
+
 
 /**
 * MENÚ DE SELECCIÓN DE PLANETAS
@@ -125,7 +130,6 @@ li.neptune:hover {
 */
 
 .modal {
-    
     position: fixed;
     z-index: 1;
     padding-top: 100px;
