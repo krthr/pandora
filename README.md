@@ -49,6 +49,7 @@ Interfaz de administración: `localhost:3000/admin`
 
 ### Capturas
 
+![](https://github.com/krthr/pandora/blob/master/assets/images/screenshots/intro.png?raw=true)
 ![](https://github.com/krthr/pandora/blob/master/assets/images/screenshots/earth.png?raw=true)
 ![](https://github.com/krthr/pandora/blob/master/assets/images/screenshots/jupiter.png?raw=true)
 ![](https://github.com/krthr/pandora/blob/master/assets/images/screenshots/mars.png?raw=true)
