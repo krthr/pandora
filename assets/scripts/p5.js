@@ -4,69 +4,73 @@ var planets = {
     size: 300,
     gravity: 274,
     sound: '',
-    satelites: '-'
+    satelites: '-',
+    year: '-',
+    day: 24.5
   },
   mercury: {
     name: 'Mercurio',
     gravity: 2.8,
     satelites: 0,
     day: 58.6,
-    year: 87.97
+    year: 0.24
   },
   venus: {
     name: 'Venus',
     gravity: 8.9,
     satelites: 0,
     day: -243,
-    year: 224.7
+    year: 0.615
   },
   earth: {
     name: 'Tierra',
     gravity: 9.8,
     satelites: 1,
-    day: 23.93,
-    year: 365.25
+    day: 1,
+    year: 1
   },
   mars: {
     name: 'Marte',
     gravity: 3.7,
     satelites: 2,
-    day: 24.62,
-    year: 686.98
+    day: 1.03,
+    year: 1.88
   },
   jupiter: {
     name: 'Júpiter',
     size: 270,
     gravity: 22.9,
     satelites: 63,
-    day: 9.84,
+    day: 0.414,
     year: 11.86
   },
   saturn: {
     name: 'Saturno',
     gravity: 9.1,
     satelites: 61,
-    day: 10.23,
+    day: 0.426,
     year: 29.46
   },
   uranus: {
     name: 'Urano',
     gravity: 7.8,
     satelites: 27,
-    day: 17.9,
+    day: 0.718,
     year: 84.01
   },
   neptune: {
     name: 'Neptuno',
     gravity: 11.00,
     satelites: 13,
-    day: 16.11,
+    day: 0.6745,
     year: 164.8
   }
 }
 
 var theta = 0
-var backgroundSound, guiSelect, startSound
+var backgroundSound, guiSelect, startSound, guiClick
+var normalVel = false,
+  pause = false
 
 function preload() {
   // Cargar texturas
@@ -79,11 +83,12 @@ function preload() {
   planets.saturn.texture = loadImage("/images/textures/saturn.jpg")
   planets.uranus.texture = loadImage("/images/textures/uranus.jpg")
   planets.neptune.texture = loadImage("/images/textures/neptune.jpg")
-  soundFormats('mp3') // Formato de sonidos que trabajaremos
+  soundFormats('mp3', 'wav') // Formato de sonidos que trabajaremos
   // Cargar sonido de fondo
   backgroundSound = loadSound('/sounds/interstellar.mp3')
   guiSelect = loadSound('/sounds/gui_select.mp3')
   startSound = loadSound('/sounds/start.mp3')
+  guiClick = loadSound('/sounds/click.wav')
 }
 
 function setup() {
@@ -107,5 +112,10 @@ function draw() {
   sphere(size) // Crear la esfera
 
   pop();
-  theta += 0.005;
+
+  if (!pause) {
+    if (!normalVel) theta += (0.01 / planets[planet].day);
+    else theta += 0.005;
+  }
+
 }

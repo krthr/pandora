@@ -79,17 +79,33 @@
             <br> (Newtons)</p>
         </div>
       </div>
+
+      <div id="velocidad">
+        <div m-on:click="setNormalVel()">
+          <a id="text_vel">Desactivar</a> velocidad real</div>
+        <div m-on:click="setPause()">
+          <a id="text_pause">Pausar</a>
+        </div>
+      </div>
+
+
     </div>
 
     <div id="info-planet" class="absolute">
-      <h5>Información básica</h5>
-      <ul>
-        <li>Día: </li>
-        <li>Año: </li>
+      <h5>Información</h5>
+      <ul id="plantet_list_info">
+        <li>Día: {{ info.day }}
+          <span class="little_text">(días terrestres)</span>
+        </li>
+        <li>Año: {{ info.year }}
+          <span class="little_text">(años terrestres)</span>
+        </li>
+        <li>¿Habitable?: {{ info.habitable }}</li>
+        <li>Lunas: {{ info.moons }}</li>
       </ul>
     </div>
 
-    <div id="canvas"></div>
+    <div m-on:click="setPause()" id="canvas"></div>
   </div>
   <!-- end app -->
 
@@ -99,14 +115,17 @@
   <!-- app -->
   <script>
     var $ = document
-    var modal = $.getElementById('myModal'),
-      t,
+    var modal = $.getElementById('myModal')
+    var t,
       lis = $.getElementsByTagName('LI')
 
     console.log(lis)
     for (var i = 0; i < lis.length; i++) {
       lis[i].addEventListener('mouseover', () => {
         guiSelect.play()
+      })
+      lis[i].addEventListener('click', () => {
+        guiClick.play()
       })
     }
 
@@ -154,7 +173,11 @@
       data: {
         info: {
           name: 'Tierra',
-          gravity: 9.8
+          gravity: 9.8,
+          day: 1,
+          year: 1,
+          habitable: 'Sí',
+          moons: 1
         },
         weight: 0
       },
@@ -162,12 +185,26 @@
         setPlanet: function (planet) {
           app.set('info', {
             name: planets[planet].name,
-            gravity: planets[planet].gravity
+            gravity: planets[planet].gravity,
+            day: planets[planet].day,
+            year: planets[planet].year,
+            habitable: planet === 'earth' ? 'Sí' : 'No',
+            moons: planets[planet].satelites
           })
+          theta = 0
           window.planet = planet
         },
         round: function (value, decimals) {
           return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals)
+        },
+        setNormalVel: function () {
+          document.getElementById('text_vel').innerHTML = !normalVel ? 'Activar' : 'Desactivar'
+          normalVel = normalVel ? false : true
+        },
+        setPause: function () {
+          document.getElementById('text_pause').innerHTML = !pause ? 'Continuar' : 'Pausar'
+          if (pause) pause = false;
+          else pause = true;
         }
       }
     })

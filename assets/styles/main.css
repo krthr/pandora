@@ -78,13 +78,16 @@ h1.planet {
     bottom: 10px;
 }
 
+li {
+    list-style-type: none;
+}
+
 
 /**
 * MENÚ DE SELECCIÓN DE PLANETAS
 */
 
 .planet-list {
-    list-style-type: none;
     left: 80px;
 }
 
@@ -122,6 +125,27 @@ li.uranus:hover {
 
 li.neptune:hover {
     color: rgb(4, 62, 99)
+}
+
+
+/**
+* INFO PLANETA
+*/
+
+#velocidad {
+    margin-top: 1rem;
+    font-size: 13px;
+}
+
+#plantet_list_info {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.little_text {
+    
+    color: gray;
+    font-size: 10px;
 }
 
 
