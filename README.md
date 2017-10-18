@@ -59,3 +59,6 @@ Interfaz de administración: `localhost:3000/admin`
 ## TODO
 
 - [ ] Usar las mediciones de sensores de peso
+
+---
+[![Maintainability](https://api.codeclimate.com/v1/badges/3430eacaa8bf7bbd6411/maintainability)](https://codeclimate.com/github/krthr/pandora/maintainability)
