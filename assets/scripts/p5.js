@@ -108,7 +108,9 @@ function setup() {
  */
 function draw() {
   background(0) // Color de fondo (negro)
+
   push()
+
   var dirY = (250 / height - 0.5) * 4,
     dirX = (250 / width - 0.5) * 4
   directionalLight(200, 200, 200, dirX, dirY, 1)
